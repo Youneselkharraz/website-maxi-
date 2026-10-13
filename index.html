@@ -1,613 +1,877 @@
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maxi Sport Osdorpplein | Sportkleding en sneakers</title>
-<meta name="description" id="md" content="Maxi Sport op het Osdorpplein in Amsterdam: sportkleding, sneakers en trainingspakken van bekende merken.">
+<meta name="theme-color" content="#f7f4f0">
+<title>Tony’s Burgers ’n Bowls Amsterdam</title>
+<meta name="description" content="Ontdek burgers, bowls, wraps en meer bij Tony’s Burgers ’n Bowls Amsterdam.">
+
 <style>
-/* MAXI SPORT: STIJLBLAD. Kleuren en maten pas je hier aan (:root) */
-:root{--k:#111111;--w:#FFFFFF;--r:#D71920;--l:#F4F4F4;--g:#333333;--top:36px;--h:76px}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--h) + 12px)}
-body{margin:0;font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--k);background:var(--w);line-height:1.55}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit}
-h1,h2,h3{font-weight:900;line-height:1.02;letter-spacing:-.01em;margin:0}
-h1{font-size:clamp(2.4rem,6vw,4.5rem);font-style:italic}
-h2{font-size:clamp(1.8rem,3.6vw,2.8rem);font-style:italic}
-:focus-visible{outline:3px solid var(--r);outline-offset:2px}
-.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
-.sr{position:absolute;left:-999px;width:1px;height:1px;overflow:hidden}
-.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:200}
+:root {
+  --red: #d71920;
+  --red-dark: #b01016;
+  --ink: #1c1c1e;
+  --muted: #66666d;
+  --line: #e7e5e3;
+  --cream: #f7f4f0;
+  --max: 1180px;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 125px; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.5;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input { font: inherit; }
+.wrap { width: 100%; max-width: var(--max); margin: auto; padding: 0 22px; }
 
-/* Groen Click & Collect-lampje */
-.dot{display:inline-block;flex:none;width:9px;height:9px;border-radius:50%;background:#22c55e;border:1px solid rgba(255,255,255,.85);box-shadow:0 0 6px 2px rgba(34,197,94,.75);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 12px 5px rgba(34,197,94,.3)}}
-@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border: 2px solid var(--red);
+  border-radius: 7px;
+  background: var(--red);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.btn:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn.ghost { background: white; color: var(--red); }
+.btn.ghost:hover { background: #fff0f0; }
+.btn.sm { padding: 9px 12px; font-size: 12px; }
 
-/* TOPBALK + NAVIGATIE */
-.topbar{background:var(--r);color:#fff;font-size:.85rem;font-weight:700;height:var(--top);display:flex;align-items:center}
-.topbar .wrap{display:flex;justify-content:space-between;gap:16px;width:100%}
-.topbar a{text-decoration:none}.topbar a:hover{text-decoration:underline}
-.cnl{display:inline-flex;gap:8px;align-items:center}
-.site-header{background:var(--k);color:#fff;position:sticky;top:0;z-index:50;height:var(--h)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:100%;padding:0 24px;max-width:1500px;margin:0 auto}
-.nl{display:flex;align-items:center}.nr{display:flex;justify-content:flex-end;gap:8px}
-.menu{list-style:none;margin:0;padding:0;display:flex;gap:4px}
-.menu a{display:block;padding:26px 12px;text-decoration:none;font-weight:700;font-size:.95rem}
-.menu a:hover,.menu a[aria-current]{box-shadow:inset 0 -4px var(--r)}
-.has-sub{position:relative}
-.sub{list-style:none;margin:0;padding:8px 0;position:absolute;top:100%;left:0;min-width:220px;background:var(--k);border-top:3px solid var(--r);display:none}
-.has-sub:hover .sub,.has-sub:focus-within .sub{display:block}
-.sub a{padding:10px 18px;font-weight:500}.sub a:hover{box-shadow:none;background:var(--g)}
-.sub-toggle,.burger{display:none}
-.logo img{height:58px;width:auto}
-.call{display:inline-flex;gap:8px;align-items:center;background:var(--r);color:#fff;text-decoration:none;font-weight:800;padding:12px 20px;min-height:44px;border:2px solid var(--r)}
-.call:hover{background:#fff;color:var(--r)}
-.cartbtn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;background:none;border:2px solid #555;color:#fff;cursor:pointer}
-.cartbtn:hover{border-color:#fff}
-.cc{position:absolute;top:-8px;right:-8px;background:var(--r);color:#fff;font-size:.72rem;font-weight:800;min-width:20px;height:20px;line-height:20px;text-align:center;padding:0 4px}
-.cc:empty{display:none}
+/* HEADER */
+header.top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.bar { display: flex; align-items: center; gap: 24px; min-height: 78px; }
+.logo img { width: auto; height: 54px; }
+nav.main { display: flex; align-items: center; gap: 25px; margin-left: auto; }
+nav.main a { font-size: 14px; font-weight: 700; text-decoration: none; }
+nav.main a:hover { color: var(--red); }
+.burger {
+  display: none;
+  width: 44px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+.burger span { display: block; height: 2px; margin: 5px 10px; background: var(--ink); }
+.status { padding: 7px 12px; background: var(--ink); color: white; text-align: center; font-size: 12px; }
 
-/* KNOPPEN */
-.btn{display:inline-block;background:var(--r);color:#fff;padding:16px 32px;font-weight:800;text-decoration:none;letter-spacing:.04em;border:2px solid var(--r);font-family:inherit;font-size:1rem;cursor:pointer}
-.btn:hover{background:#fff;color:var(--r)}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.btn.dark{background:var(--k);border-color:var(--k)}.btn.dark:hover{background:#fff;color:var(--k)}
-.btn.line{background:transparent;border-color:#fff}.btn.line:hover{background:#fff;color:var(--k)}
+/* WIDE HERO BANNER — LICHTER, BREED EN ZONDER EXTRA TEKSTLABEL */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 590px;
+  overflow: hidden;
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(247,244,240,.98) 0%,
+      rgba(247,244,240,.92) 25%,
+      rgba(247,244,240,.68) 40%,
+      rgba(247,244,240,.15) 58%,
+      rgba(247,244,240,0) 100%
+    ),
+    url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=2400&q=95");
+  background-size: cover;
+  background-position: center, center right;
+  background-repeat: no-repeat;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+.hero .wrap {
+  display: flex;
+  align-items: center;
+  min-height: 590px;
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 54%;
+  max-width: 590px;
+}
+.eyebrow {
+  margin-bottom: 20px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(48px, 6.1vw, 84px);
+  line-height: .94;
+  font-weight: 950;
+  letter-spacing: -.065em;
+  text-transform: uppercase;
+}
+.hero h1 span { display: block; }
+.hero h1 .r { color: var(--red); }
+.hero .lead {
+  max-width: 450px;
+  margin: 24px 0 28px;
+  color: #4f4b49;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 26px;
+  padding: 9px 13px;
+  border: 1px solid #ffffffb8;
+  border-radius: 7px;
+  background: #ffffffd9;
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(5px);
+}
+.hero-note span { color: var(--red); }
 
-/* HERO: de banner is een afbeelding, de knop erop is een onzichtbare link op de juiste plek */
-.hero{position:relative;background:var(--k)}
-.hero img{width:100%;height:auto;aspect-ratio:1920/720;object-fit:cover}
-.hb{position:absolute;display:block}
-.hb:hover{background:rgba(215,25,32,.14)}
-.hb.hd{left:5.5%;top:79.3%;width:21.4%;height:8.9%}
-.hb.hm{display:none;left:7%;top:78.4%;width:50.4%;height:8.3%}
+/* MOVING BURGER STRIP */
+.belt {
+  overflow: hidden;
+  padding: 16px 0;
+  background: #fafafa;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: belt 40s linear infinite;
+}
+.belt:hover .track { animation-play-state: paused; }
+.belt-item {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 285px;
+  min-height: 98px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+}
+.belt-item:hover { border-color: var(--red); }
+.belt-item img {
+  flex: none;
+  width: 92px;
+  height: 75px;
+  object-fit: contain;
+  background: var(--cream);
+  border-radius: 7px;
+  filter: drop-shadow(0 5px 5px #0002);
+}
+.belt-item strong { display: block; margin-bottom: 5px; font-size: 13px; }
+.belt-item .price { color: var(--red); font-weight: 900; font-size: 15px; }
+@keyframes belt { to { transform: translateX(-50%); } }
 
-/* MERKBALKEN */
-.brands{background:var(--l);padding:18px 0;overflow:hidden}
-.marquee{display:flex;overflow:hidden;padding:12px 0}
-.track{display:flex;flex:none;gap:56px;padding-right:56px;align-items:center;min-width:100%;justify-content:space-around;animation:l 40s linear infinite}
-.marquee.rev .track{animation-direction:reverse}
-.marquee:hover .track{animation-play-state:paused}
-.track img{height:44px;width:auto;flex:none}
-.track .bn{flex:none;font-weight:900;font-size:1.7rem;letter-spacing:.02em;text-transform:uppercase;color:var(--k);white-space:nowrap}
-@keyframes l{to{transform:translateX(-100%)}}
-@media(prefers-reduced-motion:reduce){.track{animation:none}.marquee{overflow-x:auto}}
+/* INFO STRIP */
+.strip { border-bottom: 1px solid var(--line); }
+.strip .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.info { padding: 21px 16px; border-left: 1px solid var(--line); }
+.info:first-child { border-left: 0; padding-left: 0; }
+.info strong { display: block; font-size: 14px; }
+.info span { color: var(--muted); font-size: 12px; }
 
-/* PRODUCTEN + MATEN ALS BLOKJES */
-.new{padding-top:80px;padding-bottom:80px}
-.sec-h{margin-bottom:40px}.sec-h p{margin:12px 0 0;color:var(--g)}
-.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px}
-.prod{display:block}
-.prod>a{display:block;text-decoration:none}
-.prod img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--l);transition:opacity .2s}
-.prod>a:hover img{opacity:.85}
-.pb{display:block;margin-top:12px;font-size:.8rem;font-weight:800;color:var(--r)}
-.pn{display:block;font-weight:700}.prod>a:hover .pn{text-decoration:underline}
-.pp{display:block;color:var(--g)}
-.sizes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;border:0;min-width:0}
-.sizes.err{outline:2px solid var(--r);outline-offset:4px}
-.chip{position:relative}
-.chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.chip span{display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;padding:0 8px;border:2px solid var(--k);background:#fff;font-weight:700;font-size:.9rem}
-.chip:hover span{border-color:var(--r)}
-.chip input:checked+span{background:var(--k);color:#fff}
-.chip input:focus-visible+span{outline:3px solid var(--r);outline-offset:2px}
-.add{margin-top:10px;width:100%;min-height:44px;background:var(--k);color:#fff;border:2px solid var(--k);font:inherit;font-weight:800;cursor:pointer}
-.add:hover{background:var(--r);border-color:var(--r)}
-.note{font-size:.85rem;color:#666;margin:24px 0}
+/* SECTIONS */
+section.s { padding: 62px 0; }
+.sh {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 27px;
+}
+.sh h2 { font-size: clamp(29px, 4vw, 43px); font-weight: 950; text-transform: uppercase; }
+.sh p { max-width: 440px; color: var(--muted); font-size: 14px; }
 
-/* PRODUCTPAGINA */
-.pdp{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;padding:32px 24px 80px}
-#gmain{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--l)}
-.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
-.thumbs button{padding:0;border:2px solid transparent;background:none;cursor:pointer}
-.thumbs button[aria-current=true]{border-color:var(--r)}
-.thumbs img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.pdp h1{font-size:clamp(1.8rem,3.5vw,2.6rem);margin:6px 0 10px}
-.pdp .price{font-size:1.5rem;font-weight:800}
-.pdp .sizes{margin-top:18px}.pdp .chip span{min-width:48px;min-height:48px}
-.pdp .add{margin-top:16px;min-height:52px}
-.pdp h2{font-size:1.2rem;font-style:normal;margin:28px 0 10px}
-.cnote{display:flex;gap:10px;align-items:center;font-weight:700;margin:16px 0}
-.cnote .dot{border-color:#ddd}
-.pdp dl{display:grid;grid-template-columns:130px 1fr;margin:0}
-.pdp dt,.pdp dd{margin:0;padding:8px 0;border-bottom:1px solid #ddd}.pdp dt{font-weight:800}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 17px; }
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+}
+.card .ph { aspect-ratio: 4/3; padding: 12px; background: var(--cream); cursor: pointer; }
+.card .ph img { width: 100%; height: 100%; object-fit: contain; transition: transform .25s; }
+.card:hover .ph img { transform: scale(1.04); }
+.card .bd { display: flex; flex: 1; flex-direction: column; gap: 9px; padding: 15px; }
+.card h3 { font-size: 16px; cursor: pointer; }
+.card h3:hover { color: var(--red); }
+.card p { flex: 1; color: var(--muted); font-size: 13px; }
+.card .ft { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.price { font-size: 19px; font-weight: 900; }
+.tag { display: inline-block; padding: 3px 7px; border: 1px solid var(--line); border-radius: 4px; font-size: 11px; font-weight: 800; }
+.tag.h { color: var(--red); border-color: var(--red); }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
-/* INFO-BLOKKEN */
-.usps{display:grid;grid-template-columns:repeat(4,1fr);background:var(--k);color:#fff}
-.usp{padding:40px 28px;border-left:1px solid #333}.usp:first-child{border-left:0}
-.usp h3{font-size:1.15rem;font-style:italic;margin-bottom:8px;color:#fff;border-left:5px solid var(--r);padding-left:12px}
-.usp p{margin:0;color:#ccc}
+.mtools {
+  position: sticky;
+  top: 121px;
+  z-index: 30;
+  padding: 12px 0;
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.mtools .wrap { display: flex; align-items: center; gap: 15px; }
+.search { flex: 0 0 240px; }
+.search input { width: 100%; padding: 11px 13px; border: 1px solid var(--line); border-radius: 6px; }
+.cats { display: flex; gap: 8px; overflow-x: auto; padding: 3px; }
+.cats a {
+  flex: none;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.cats a:hover { color: white; background: var(--red); border-color: var(--red); }
+.cat { padding-top: 38px; scroll-margin-top: 190px; }
+.cat h2 {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding-bottom: 7px;
+  border-bottom: 3px solid var(--red);
+  font-size: 27px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+.empty { padding: 45px 0; color: var(--muted); text-align: center; }
+.legend { margin-top: 35px; color: var(--muted); font-size: 12px; }
 
-/* OVER ONS */
-.about{display:grid;grid-template-columns:1fr 1fr;background:var(--w)}
-.about-i img{width:100%;height:100%;object-fit:cover;aspect-ratio:1000/1100}
-.about-t{padding:80px 64px;align-self:center;max-width:640px}.about-t p{margin:20px 0;color:var(--g)}
-
-/* SOCIAL */
-.social{background:var(--l);padding:64px 0}
-.social .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
-.social p{margin:12px 0 0;color:var(--g);max-width:520px}
-.social-btns{display:flex;gap:12px;flex-wrap:wrap}
-
-/* FAQ */
-.faq{padding-top:80px;padding-bottom:80px;max-width:900px}.faq h2{margin-bottom:32px}
-.qa{border-top:2px solid var(--k)}.qa:last-child{border-bottom:2px solid var(--k)}
-.qa h3{font-size:1.1rem;font-style:normal}
-.qa button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;width:100%;padding:20px 0;font-weight:800}
-.qa button:after{content:"+";color:var(--r);font-size:1.5rem;line-height:1}
-.qa button[aria-expanded=true]:after{content:"\2212"}
-.qa button:focus-visible{outline:3px solid var(--r)}
-.ans p{margin:0 0 20px;color:var(--g)}
-
-/* CATEGORIE, CLICK & COLLECT */
-.crumbs{padding-top:24px;font-size:.9rem;color:var(--g)}
-.crumbs a{text-decoration:none;font-weight:700}.crumbs a:hover{color:var(--r)}.crumbs span{color:var(--r);font-weight:700}
-.banner{background:var(--k);color:#fff;margin-top:16px;padding:48px 0;border-bottom:6px solid var(--r)}
-.banner p{max-width:640px;margin:16px 0 0;color:#ddd}
-.filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:32px 0 28px;padding:14px 0;border-top:2px solid var(--k);border-bottom:1px solid #ddd}
-.filters label{font-weight:800}
-.filters select,.filters input{font:inherit;padding:10px 14px;border:2px solid var(--k);background:#fff;min-height:44px}
-#cnt{margin-left:auto;color:var(--g)}
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:80px}
-.tile{position:relative;color:#fff;text-decoration:none;display:block;overflow:hidden}
-.tile img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.tile span{position:absolute;left:0;bottom:0;background:var(--k);padding:14px 22px;font-weight:900;font-style:italic;border-left:6px solid var(--r)}
-.tile:hover span{background:var(--r)}
-.cta-band{background:var(--k);color:#fff;margin-top:80px;padding:56px 0}
-.cta-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.steps{counter-reset:s;list-style:none;padding:0;margin:0 0 32px;max-width:700px}
-.steps li{counter-increment:s;position:relative;padding:16px 0 16px 56px;border-bottom:1px solid #ddd}
-.steps li:before{content:counter(s);position:absolute;left:0;top:12px;width:40px;height:40px;background:var(--r);color:#fff;font-weight:900;display:grid;place-items:center}
-
-/* CONTACT */
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-bottom:40px}
-.cgrid h2{font-size:1.2rem;margin:28px 0 8px;font-style:normal}.cgrid h2:first-child{margin-top:0}
-.map iframe{width:100%;height:100%;min-height:380px;border:0;background:var(--l)}
-table.hrs{border-collapse:collapse;width:100%;max-width:360px}
-.hrs td{padding:7px 0;border-bottom:1px solid #ddd}.hrs td:last-child{text-align:right}
-.hrs tr.today{font-weight:800;color:var(--r)}
-
-/* WINKELMAND */
-.ov{position:fixed;inset:0;background:rgba(17,17,17,.6);z-index:150}
-.cart{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;z-index:160;display:flex;flex-direction:column;border-left:6px solid var(--r)}
-.ch{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:2px solid var(--k)}
-.ch h2{font-size:1.5rem}
-.ch button{background:none;border:0;font-size:1.6rem;cursor:pointer;min-width:44px;min-height:44px}
-.cb{flex:1;overflow:auto;padding:8px 24px}
-.ci{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid #ddd}
-.ci img{width:72px;aspect-ratio:4/5;object-fit:cover;background:var(--l)}
-.ci .t{font-weight:800}.ci .s{font-size:.85rem;color:var(--g)}
-.qty{display:flex;align-items:center;gap:6px;margin-top:8px}
-.qty button{min-width:36px;min-height:36px;border:2px solid var(--k);background:#fff;font:inherit;font-weight:800;cursor:pointer}
-.qty button:hover{background:var(--k);color:#fff}
-.qty .rm{margin-left:auto;border:0;text-decoration:underline;min-width:auto;font-weight:600}
-.qty .rm:hover{background:none;color:var(--r)}
-.cf{padding:20px 24px;border-top:2px solid var(--k);background:var(--l)}
-.cf .tot{display:flex;justify-content:space-between;font-weight:800;font-size:1.1rem;margin-bottom:12px}
-.cf .btn{display:block;text-align:center;width:100%;margin-top:8px;padding:14px 16px}
-.cf small{display:flex;gap:8px;align-items:center;margin-top:12px;color:var(--g);font-size:.82rem}
-.empty{padding:32px 0;color:var(--g)}
-
-/* AFREKENEN */
-.co{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;padding:32px 24px 80px;align-items:start}
-.co h2{font-size:1.3rem;font-style:normal;margin:28px 0 8px}.co h2:first-child{margin-top:0}
-.f label.l{display:block;font-weight:800;margin:14px 0 6px}
-.f input[type=text],.f input[type=email],.f input[type=tel]{width:100%;font:inherit;padding:10px 14px;border:2px solid var(--k);min-height:44px}
-.f fieldset{border:0;padding:0;margin:0}
-.opt{display:flex;gap:10px;align-items:center;border:2px solid var(--k);padding:12px 14px;margin-top:8px;cursor:pointer;font-weight:700}
-.opt:has(input:checked){border-color:var(--r);background:var(--l)}
-.opt small{display:block;font-weight:400;color:var(--g)}
-.sum{background:var(--l);padding:24px;position:sticky;top:calc(var(--h) + 16px)}
-.sum ul{list-style:none;margin:0;padding:0}
-.sum li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid #ddd}
-.sum li.tot{font-weight:900;font-size:1.2rem;border:0}
-.msg{background:#fff3f3;border-left:5px solid var(--r);padding:12px 16px;margin:16px 0 0}
+/* ABOUT */
+.two, .rev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.box, .rc { padding: 24px; border: 1px solid var(--line); border-radius: 9px; }
+.box h3 { margin-bottom: 12px; font-size: 22px; }
+.box p { margin-bottom: 18px; font-size: 14px; }
+.box:not(.r) p, .rc p { color: var(--muted); }
+.box.r { color: white; background: var(--red); border-color: var(--red); }
+.box.r .btn { color: var(--red); background: white; border-color: white; }
+.rc { border-top: 3px solid var(--red); }
+.rc p { margin: 12px 0; font-size: 14px; }
 
 /* FOOTER */
-.site-footer{background:var(--k);color:#fff;border-top:6px solid var(--r);padding-top:56px}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:40px}
-.site-footer h3{font-size:1rem;margin-bottom:14px;color:var(--r)}
-.site-footer ul{list-style:none;padding:0;margin:0}.site-footer li{margin-bottom:8px}
-.site-footer a{text-decoration:none}.site-footer a:hover{text-decoration:underline}
-.site-footer p{color:#ccc;max-width:320px}
-.site-footer .hrs td{border-color:#333;padding:3px 0;font-size:.9rem}.site-footer .hrs tr.today{color:#fff}
-.site-footer .hrs{max-width:260px}
-.site-footer .flogo{height:64px;width:auto;margin-bottom:12px}
-.copy{border-top:1px solid #333;margin-top:40px;padding:20px 24px;color:#999;font-size:.9rem}
+footer { padding: 46px 0 24px; color: white; background: var(--ink); }
+footer .cols { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 25px; }
+footer h4 { margin-bottom: 12px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+footer p, footer li { color: #d0d0d3; font-size: 13px; }
+footer li { list-style: none; padding: 3px 0; }
+footer li b { display: inline-block; min-width: 90px; color: white; }
+footer ul { padding: 0; }
+footer a { color: white; }
+footer img.l { height: 48px; padding: 5px; margin-bottom: 12px; border-radius: 5px; background: white; }
+.fine { margin-top: 28px; padding-top: 16px; border-top: 1px solid #414145; color: #aaa; font-size: 12px; }
 
-/* MOBIEL EN TABLET */
-@media(max-width:900px){
- :root{--h:64px}
- .nav{padding:0 12px}
- .topbar{font-size:.78rem}.topbar .addr{display:none}.topbar .wrap{justify-content:center;gap:14px}
- .burger{display:block;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative}
- .burger span,.burger span:before,.burger span:after{position:absolute;left:10px;width:24px;height:3px;background:#fff;content:""}
- .burger span{top:20px}.burger span:before{left:0;top:-8px}.burger span:after{left:0;top:8px}
- .menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--k);flex-direction:column;gap:0;max-height:calc(100vh - var(--h));overflow:auto;border-top:3px solid var(--r)}
- .menu.open{display:flex}.menu a{padding:16px 24px}
- .has-sub{display:flex;flex-wrap:wrap}.has-sub>a{flex:1}
- .sub-toggle{display:block;width:56px;background:none;border:0;color:#fff;cursor:pointer}
- .sub-toggle:after{content:"+";font-size:1.5rem;color:var(--r)}.sub-toggle[aria-expanded=true]:after{content:"\2212"}
- .sub{position:static;display:none;width:100%;border:0;background:var(--g)}
- .has-sub:hover .sub{display:none}.has-sub.open .sub{display:block}
- .logo img{height:48px}.call span{display:none}.call{padding:12px;justify-content:center;min-width:44px}
- .hero img{aspect-ratio:1080/1350}.hb.hd{display:none}.hb.hm{display:block}
- .pgrid,.tiles{grid-template-columns:repeat(2,1fr);gap:24px 16px}
- .cgrid,.about,.usps,.pdp,.co{grid-template-columns:1fr}.pdp,.co{gap:28px}.sum{position:static}
- .usp{border-left:0;border-top:1px solid #333}.usp:first-child{border-top:0}
- .new{padding-top:48px;padding-bottom:48px}.about-t{padding:48px 24px}
- .fgrid{grid-template-columns:1fr 1fr}
+/* PRODUCT MODAL */
+dialog {
+  width: min(760px, calc(100% - 28px));
+  max-width: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
 }
-@media(max-width:520px){.fgrid{grid-template-columns:1fr}#cnt{margin-left:0;width:100%}.social-btns .btn{width:100%;text-align:center}}
+dialog::backdrop { background: #0009; }
+.modal { position: relative; display: grid; grid-template-columns: 1fr 1fr; }
+.modal .ph { display: flex; align-items: center; justify-content: center; min-height: 260px; padding: 20px; background: var(--cream); }
+.modal .ph img { width: 100%; max-height: 340px; object-fit: contain; }
+.modal .tx { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 30px; }
+.modal h3 { font-size: 27px; }
+.modal .x { position: absolute; top: 10px; right: 10px; z-index: 2; width: 38px; height: 38px; border: 0; border-radius: 6px; background: white; font-size: 23px; cursor: pointer; }
+.modal .note { color: var(--muted); font-size: 12px; }
+.mbar { display: none; }
+
+/* TABLET */
+@media(max-width:900px) {
+  .hero { min-height: 540px; background-position: center, 58% center; }
+  .hero .wrap { min-height: 540px; }
+  .hero-copy { width: 61%; }
+  .hero h1 { font-size: clamp(44px, 6.5vw, 66px); }
+  .hero .lead { font-size: 15px; }
+  .strip .wrap { grid-template-columns: 1fr 1fr; }
+  .info:nth-child(3) { padding-left: 0; border-left: 0; }
+  .two, .rev { grid-template-columns: 1fr; }
+  footer .cols { grid-template-columns: 1fr 1fr; }
+}
+
+/* MOBIEL */
+@media(max-width:760px) {
+  .wrap { padding: 0 16px; }
+  .bar { min-height: 68px; gap: 12px; }
+  .logo img { height: 47px; }
+  .bar > .btn { display: none; }
+  .burger { display: block; margin-left: auto; }
+
+  nav.main {
+    display: none;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px 20px 16px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+  }
+  nav.main.open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  nav.main a { padding: 13px 0; border-bottom: 1px solid var(--line); }
+
+  .hero {
+    min-height: 0;
+    background-image: none;
+    background-color: var(--cream);
+  }
+  .hero::after { display: none; }
+  .hero .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 32px 16px 0;
+  }
+  .hero-copy { width: 100%; max-width: 600px; padding: 0 0 22px; }
+  .hero h1 { font-size: clamp(43px, 11vw, 65px); }
+  .hero .lead { margin: 17px 0 21px; font-size: 15px; line-height: 1.7; }
+
+  /* Brede mobiele banner zonder zwart tekstlabel */
+  .hero-banner {
+    display: block;
+    position: relative;
+    width: calc(100% + 32px);
+    height: clamp(260px, 70vw, 400px);
+    margin: 0 -16px;
+    overflow: hidden;
+    background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=90");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .belt { padding: 12px 0; }
+  .belt-item { width: 255px; min-height: 87px; }
+  .belt-item img { width: 82px; height: 65px; }
+
+  .info { padding: 14px 10px; }
+  .info strong { font-size: 12px; }
+  .info span { font-size: 11px; }
+  section.s { padding: 42px 0; }
+
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card .bd { padding: 10px; gap: 8px; }
+  .card h3 { font-size: 14px; }
+  .card p { font-size: 12px; }
+  .card .ph { padding: 7px; }
+  .card .ft { align-items: flex-start; flex-direction: column; }
+  .card .btn { width: 100%; padding: 9px 5px; font-size: 12px; }
+  .price { font-size: 17px; }
+
+  .mtools { top: 106px; }
+  .mtools .wrap { flex-direction: column; align-items: stretch; gap: 8px; }
+  .search { flex: auto; }
+  .cats { padding-bottom: 5px; }
+  .cat { scroll-margin-top: 185px; }
+
+  .modal { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+  .modal .ph { min-height: 180px; }
+  .modal .ph img { max-height: 220px; }
+  .modal .tx { padding: 22px; }
+  footer .cols { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+
+  .mbar {
+    display: block;
+    position: fixed;
+    z-index: 60;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 16px;
+    background: white;
+    border-top: 1px solid var(--line);
+  }
+  .mbar .btn { display: flex; width: 100%; }
+  body { padding-bottom: 72px; }
+}
+@media(max-width:420px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 43px; }
+  .hero-banner { height: 250px; }
+  footer .cols { grid-template-columns: 1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
 </style>
 </head>
+
 <body>
-<a class="skip" href="#main" id="sk">Naar de inhoud</a>
-<div class="topbar" id="tb"></div>
-<header class="site-header" id="hd"></header>
-<main id="main" tabindex="-1"></main>
-<footer class="site-footer" id="ft"></footer>
-<div class="ov" id="ov" hidden></div>
-<aside class="cart" id="cart" role="dialog" aria-modal="true" aria-label="Winkelmand" hidden></aside>
-<div class="sr" id="live" aria-live="polite"></div>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Tony’s Burgers ’n Bowls home">
+      <img src="https://cdn.sitedish.nl/www.tonysburgersnbowls.nl/img/logo.png" alt="Tony’s Burgers ’n Bowls">
+    </a>
+    <nav class="main" id="nav" aria-label="Hoofdmenu">
+      <a href="#top">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#over-ons">Over ons</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn order-link" href="#">Bestel nu</a>
+    <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="status">Tony’s Burgers ’n Bowls · 100% halal</div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Amsterdam · 100% halal</p>
+        <h1>
+          <span>Burgers.</span>
+          <span>Bowls.</span>
+          <span class="r">Pure smaak.</span>
+        </h1>
+        <p class="lead">
+          Smashburgers, chickenburgers, wraps en bowls.
+          Vol van smaak, vers bereid en klaar om van te genieten.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#menu">Bekijk het menu</a>
+          <a class="btn ghost order-link" href="#">Bestel nu</a>
+        </div>
+        <div class="hero-note"><span>●</span> 100% halal · Bestellen en afhalen</div>
+      </div>
+
+      <!-- De desktopfoto staat als brede achtergrond.
+           Op mobiel verschijnt een brede foto onder de tekst.
+           Het zwarte tekstlabel is verwijderd. -->
+      <div class="hero-banner" aria-label="Sfeervolle burgerbanner"></div>
+    </div>
+  </section>
+
+  <section class="belt" aria-label="Populaire burgers">
+    <div class="track" id="belt"></div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <div class="info"><strong>100% halal</strong><span>Onze halal selectie</span></div>
+      <div class="info"><strong>Spaarkaart</strong><span>Bij 3 punten €5 korting</span></div>
+      <div class="info"><strong>Bezorgen of afhalen</strong><span>Bestel online</span></div>
+      <div class="info"><strong>Voor elke trek</strong><span>Burgers, bowls en meer</span></div>
+    </div>
+  </div>
+
+  <section class="s" id="popular">
+    <div class="wrap">
+      <div class="sh">
+        <h2>Populaire gerechten</h2>
+        <p>Ontdek onze favorieten. Klik op een gerecht voor meer informatie.</p>
+      </div>
+      <div class="grid" id="popGrid"></div>
+    </div>
+  </section>
+
+  <section id="menu" style="padding-bottom:60px">
+    <div class="wrap">
+      <div class="sh">
+        <h2>Menukaart</h2>
+        <p>Zoek een gerecht of kies een categorie.</p>
+      </div>
+    </div>
+    <div class="mtools">
+      <div class="wrap">
+        <div class="search">
+          <input id="q" type="search" placeholder="Zoek een gerecht..." aria-label="Zoek een gerecht">
+        </div>
+        <nav class="cats" id="cats" aria-label="Menucategorieën"></nav>
+      </div>
+    </div>
+    <div class="wrap" id="menuBody"></div>
+    <div class="wrap">
+      <p class="legend">Heb je vragen over ingrediënten of allergenen? Neem dan contact op met het restaurant.</p>
+    </div>
+  </section>
+
+  <section class="s" id="over-ons" style="background:var(--cream)">
+    <div class="wrap">
+      <div class="sh">
+        <h2>Over Tony’s</h2>
+        <p>Volle smaken, stevige burgers en bowls voor iedere trek.</p>
+      </div>
+      <div class="two">
+        <div class="box">
+          <h3>100% halal</h3>
+          <p>Ontdek onze selectie burgers, kipgerechten, wraps en bowls.</p>
+          <a class="btn sm" href="#menu">Bekijk menu</a>
+        </div>
+        <div class="box">
+          <h3>Spaarkaart</h3>
+          <p>Bij 3 spaarpunten krijg je €5 korting. Vraag naar de voorwaarden.</p>
+          <a class="btn sm ghost order-link" href="#">Bestel online</a>
+        </div>
+        <div class="box r">
+          <h3>Zin gekregen?</h3>
+          <p>Bekijk het menu en plaats je bestelling online.</p>
+          <a class="btn sm order-link" href="#">Bestel nu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="reviews">
+    <div class="wrap">
+      <div class="sh">
+        <h2>Beoordelingen</h2>
+        <p>Bezoek de website van Tony’s voor meer informatie.</p>
+      </div>
+      <div class="rev">
+        <article class="rc">
+          <h3>Ervaringen van klanten</h3>
+          <p>Bekijk de beschikbare beoordelingen en informatie op de officiële website.</p>
+          <a href="https://www.tonysburgersnbowls.nl/">Bezoek de website →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img class="l" src="https://cdn.sitedish.nl/www.tonysburgersnbowls.nl/img/logo.png" alt="Tony’s Burgers ’n Bowls">
+        <p>Burgers. Bowls. Pure smaak.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Jan Evertsenstraat 162<br>1056 EL Amsterdam</p>
+        <p><a href="tel:0640797183">06 40797183</a></p>
+      </div>
+      <div>
+        <h4>Openingstijden</h4>
+        <ul id="hrsO"></ul>
+      </div>
+      <div>
+        <h4>Bestellen</h4>
+        <p>Bekijk het menu en bestel via de bestelomgeving.</p>
+        <p style="margin-top:12px"><a class="order-link" href="#">Bestel online →</a></p>
+      </div>
+    </div>
+    <p class="fine">Controleer actuele prijzen, openingstijden en bestelvoorwaarden bij het restaurant.</p>
+  </div>
+</footer>
+
+<div class="mbar"><a class="btn order-link" href="#">Bestel nu</a></div>
+
+<dialog id="dlg" aria-labelledby="dT">
+  <div class="modal">
+    <button class="x" id="dX" aria-label="Sluiten">×</button>
+    <div class="ph"><img id="dI" alt=""></div>
+    <div class="tx">
+      <h3 id="dT"></h3>
+      <div class="tags" id="dG"></div>
+      <p id="dD"></p>
+      <div class="price" id="dP"></div>
+      <a class="btn order-link" href="#">Bestel online</a>
+      <p class="note">Controleer productopties in de bestelomgeving.</p>
+    </div>
+  </div>
+</dialog>
 
 <script>
-/* ==========================================================
-   MAXI SPORT: INSTELLINGEN (hier pas je alles aan)
-   ========================================================== */
+const ORDER_URL = "https://www.tonysburgersnbowls.nl/#menu";
+const IMG = "https://cdn.sitedish.nl/www.tonysburgersnbowls.nl/img/gerechten/";
+const enc = file => file ? IMG + encodeURI(file).replace(/\[/g,"%5B").replace(/\]/g,"%5D") : "";
+const FL = {H:"Halal",P:"Pittig",M:"Mild",S:"Sesam",V:"Vis",K:"Schaal- en schelpdieren",X:"Uitverkocht"};
 
-var SHOP={naam:"Maxi Sport",straat:"Osdorpplein 655",postcode:"1068 TC",plaats:"Amsterdam",telefoonTekst:"020 331 4133",telefoonLink:"+31203314133"};
-/* Openingstijden: zondag t/m zaterdag. Gesloten dag: open:"" en dicht:"". */
-var HOURS=[
-  {dag:"zondag",    open:"12:00",dicht:"18:00"},
-  {dag:"maandag",   open:"12:00",dicht:"18:00"},
-  {dag:"dinsdag",   open:"10:00",dicht:"18:00"},
-  {dag:"woensdag",  open:"10:00",dicht:"18:00"},
-  {dag:"donderdag", open:"10:00",dicht:"21:00"},
-  {dag:"vrijdag",   open:"10:00",dicht:"18:00"},
-  {dag:"zaterdag",  open:"10:00",dicht:"18:00"}
-];
-var BELEID={
-  reserveren:"[RESERVERINGSBELEID INVULLEN]",
-  retour:"Je kunt je bestelling binnen 14 dagen retourneren. Retourneren kan ook in de winkel op het Osdorpplein, met aankoopbewijs."
-};
-var SOCIALS=[
-  {naam:"TikTok",    handle:"@maxi_sport655",     url:"https://www.tiktok.com/@maxi_sport655"},
-  {naam:"Instagram", handle:"@maxi_sport_osdorp", url:"https://www.instagram.com/maxi_sport_osdorp/"}
-];
-var SERVICE={titel:"Vandaag besteld, vandaag ingepakt",tekst:"Wij pakken je bestelling dezelfde dag in."};
-
-/* BETALEN
-   PAY.url = adres van JOUW betaalserver (bijv. een kleine server die een Mollie- of Stripe-betaling aanmaakt).
-   De site stuurt de bestelling (zonder prijzen) als JSON naar dit adres en verwacht {"url":"https://...betaalpagina"} terug.
-   De server moet de prijzen zelf opzoeken aan de hand van de product-id's. Leeg = betalen nog niet gekoppeld. */
-var PAY={url:""};
-/* Verzendkosten bij thuisbezorgen (Click & Collect is gratis). Pas aan. */
-var SHIP={kosten:4.95};
-
-/* AFBEELDINGEN */
-var IMG={
-  logo:"",
-  hero:"images/maxi-banner-desktop.PNG",        // 1920x720
-  heroMobiel:"images/maxi-banner-mobiel.PNG",   // 1080x1350
-  winkel:"images/maxi-banner-mobiel.PNG"        // blok "Sport en style, midden in Osdorp"
-};
-var BRANDLOGO={};
-
-/* MERKEN EN CATEGORIEËN */
-var BRANDS=["Nike","Under Armour","ASICS","Saucony","New Balance","Antony Morato","Lacoste","HUGO BOSS"];
-var CATS={
-  heren:["Heren",[["trainingspakken","Trainingspakken"],["schoenen","Schoenen"],["t-shirts","T-shirts"],["broeken","Broeken"],["truitjes","Truitjes"],["korte-broeken","Korte broeken"],["zomer-setjes","Zomer setjes"],["accessoires","Accessoires"]]],
-  junior:["Junior",[["schoenen","Schoenen"],["trainingspakken","Trainingspakken"]]],
-  dames:["Dames",[["schoenen","Schoenen"]]],
-  kids:["Kids",[["schoenen","Schoenen"],["trainingspakken","Trainingspakken"]]]
-};
-var MATEN={
-  "heren-schoenen":["39","40","41","42","43","44","45","46","47"],
-  "dames-schoenen":["36","37","38","39","40","41","42"],
-  "junior-schoenen":["33","34","35","36","37","38","39","40"],
-  "kids-schoenen":["24","25","26","27","28","29","30","31","32"],
-  "heren-trainingspakken":["S","M","L","XL","XXL"],"heren-t-shirts":["S","M","L","XL","XXL"],"heren-broeken":["S","M","L","XL","XXL"],
-  "heren-truitjes":["S","M","L","XL","XXL"],"heren-korte-broeken":["S","M","L","XL","XXL"],"heren-zomer-setjes":["S","M","L","XL","XXL"],
-  "junior-trainingspakken":["128","140","152","164"],"kids-trainingspakken":["98","104","110","116","122"]
-};
-
-/* PRODUCTINFO per subcategorie: VOORBEELDTEKST, vervang door echte gegevens.
-   Per product kan het ook: info:{tekst:"",materiaal:"",onderhoud:""} en imgs:["images/a.jpg","images/b.jpg",...] */
-var INFO={
-  schoenen:{tekst:"Comfortabele sneaker voor sport en dagelijks gebruik.",materiaal:"Textiel en synthetisch bovenwerk, rubberen zool",onderhoud:"Afnemen met een vochtige doek"},
-  trainingspakken:{tekst:"Trainingspak voor sport en vrije tijd.",materiaal:"Polyester en katoen",onderhoud:"Wassen op 30 °C, niet in de droger"},
-  default:{tekst:"Sportkleding van een bekend merk.",materiaal:"Zie etiket in het product",onderhoud:"Zie waslabel"}
-};
-
-/* PRODUCTEN: voorbeelddata (ook de prijzen), GEEN echte voorraad.
-   {id:"heren-schoenen-1",cat:"heren",sub:"schoenen",brand:"Nike",name:"Naam",img:"images/x.jpg",imgs:[...],prijs:"€ 99,95",maten:["41","42"]} */
-var PRIJZEN=["€ 59,95","€ 79,95","€ 99,95","€ 129,95"];
-var P=[];
-Object.keys(CATS).forEach(function(c){CATS[c][1].forEach(function(s){for(var i=0;i<4;i++)P.push({id:c+"-"+s[0]+"-"+(i+1),cat:c,sub:s[0],brand:BRANDS[(i*2+P.length)%8],name:s[1]+" voorbeeld "+(i+1),img:"",prijs:PRIJZEN[i]})})});
-var NIEUW=[0,32,40,48];
-
-/* FAQ */
-var ADRES=SHOP.straat+", "+SHOP.postcode+" "+SHOP.plaats;
-var FAQ=[
- ["Waar is Maxi Sport gevestigd?","Maxi Sport is een fysieke sport- en modewinkel op het Osdorpplein in Amsterdam: "+ADRES+"."],
- ["Welke merken verkoopt Maxi Sport?","Onder andere "+BRANDS.join(", ")+". Het actuele assortiment kan wisselen. Bel of kom langs voor wat nu in de winkel ligt."],
- ["Kan ik producten in de winkel passen?","Ja, je kunt producten in de winkel zelf bekijken en passen. Ons team helpt je graag met advies."],
- ["Wat zijn de openingstijden?","@HOURS@"],
- ["Hoe kan ik contact opnemen met Maxi Sport?","Bel ons op "+SHOP.telefoonTekst+" of kom langs op het Osdorpplein. Meer gegevens staan op de contactpagina."],
- ["Kan ik controleren of een product beschikbaar is?","Deze website toont geen live voorraad. Bel ons op "+SHOP.telefoonTekst+" of vraag het in de winkel."],
- ["Kan ik een product bestellen?","Ja. Zet je producten in het winkelmandje en reken af. Kies bij het afrekenen voor thuisbezorgen of Click & Collect. "+SERVICE.titel+"."],
- ["Wat is Click & Collect?","Je bestelt online en haalt je bestelling gratis af in onze winkel op het Osdorpplein."],
- ["Kan ik een product reserveren?",BELEID.reserveren],
- ["Kan ik een product retourneren?",BELEID.retour]
+const MENU = [
+["Specials","specials",[
+["Crazy Tony Burger",15.99,"Brioche bun, crispy chicken, beef, cheddar, halal bacon, pickles, jalapeños, sla en Tony’s sauzen","PH","6a37e0ae9f457_Crazy_tony_burger.png"],
+["Tony’s Super Smashburger",14.99,"Brioche bun, dubbel rundvlees, cheddar, gekarameliseerde ui, sla, augurken, saus, halal bacon en jalapeños","H","6a2b2d75c634f_image14.png"],
+["Tony’s Super chickenburger",14.99,"Dubbele crispy chicken, halal bacon, cheddar, sla, ui, augurken, jalapeños en witte saus","PH","6a2b2ec246f2d_Tonys_Super_chickenburger.png"]
+]],
+["Beef burgers","beef",[
+["Smashburger",7.99,"Brioche bun, rundvlees, gekarameliseerde ui, sla, augurken en Tony’s saus","H","6ac2b6f14cf42_Classic_hamburger_[4_3-1875x2500]_13b.png"],
+["Smashburger cheese",8.49,"Brioche bun, rundvlees, gekarameliseerde ui, sla, augurken, saus en cheddar","H","6ac2b70ca08fd_Cheeseburger_[4_3-1875x2500]_4bb.png"],
+["Wagyu A5 smashburger single Truffelmayo",14.99,"Wagyu-rundvlees, brioche, sla, augurken, truffelmayo en cheddar","H","6ac6738e4df51_wagyu.png"],
+["Wagyu A5 smashburger double Truffelmayo",18.99,"Dubbel wagyu-rundvlees, brioche, sla, augurken, truffelmayo en cheddar","H","6ac673981e2d1_wagyu.png"]
+]],
+["Chickenburgers","chicken",[
+["Classic Chickenburger",7.99,"Brioche bun, crispy chickenfilet, sla, augurken en witte saus","H","6a2b2d9c8fab4_image12.png"],
+["Spicy Chickenburger",8.49,"Crispy chickenfilet, sla, augurken, witte saus en jalapeños","PH","6a2b2eb0c104f_spicy_chicken_burger_tony.png"]
+]],
+["Wraps","wraps",[
+["Tony’s Wrap",11.99,"Tortilla met chicken tenders, mais, sla, augurk, jalapeños, friet en cheddarsaus","PH","6a6b6c80ab99a_Tonys_wrap.png"],
+["Crispy chicken wrap sweet chili",7.99,"Tortilla, crispy chicken, mais, sla, augurk en sweet chilisaus","H","6a6b6e885a0dd_Crispy_Chicken_Wrap.png"],
+["Crispy chicken wrap bbq",7.99,"Tortilla, crispy chicken, mais, sla, augurk en barbecuesaus","H","6a6b6eae2510e_Crispy_Chicken_Wrap.png"],
+["Grilled beef wrap teriyaki",7.99,"Gegrild rundvlees, mais, sla, augurk en teriyakisaus","H","6a6b6f2701301_grilled_beef_wrap.png"]
+]],
+["Rice bowls","rice",[
+["Grilled Beef Rice",15.99,"Rijst, rundvlees, Tony’s saus, wortel, augurk, mais, bosui, crispy onions en sesam","SH","6a49365aadbc7_Beef_Rice_[4_3-1875x2500]_6aa.png"],
+["Crispy Chicken Rice",13.99,"Rijst, krokante kip, teriyaki, sweet chili, groenten, crispy onions en sesam","SH","6a49366f2611a_Chicken_Fries_[4_3-1875x2500]_df6.png"],
+["Crispy Shrimp Rice",14.99,"Rijst, garnalen, mayo, sweet chili, groenten, crispy onions en sesam","KSH","6a49369284cfd_Falafel_doritos_[4_3-1875x2500]_789.png"]
+]],
+["Loaded fries","fries",[
+["Grilled Beef Fries",15.99,"Seasoned fries, cheddarsaus, rundvlees, Tony’s saus, groenten en sesam","SH","6a4936aa09062_Beef_Fries_[4_3-1875x2500]_2a8.png"],
+["Crispy Chicken Fries",13.99,"Seasoned fries, cheddarsaus, krokante kip, sauzen, groenten en sesam","SH","6a4936c08b9c4_Chicken_Rice_[4_3-1875x2500]_c2f.png"],
+["Crispy Shrimp Fries",14.99,"Seasoned fries, cheddarsaus, garnalen, sweet chili, groenten en sesam","KSH","6a4936e43bbb3_Shrimp_Fries_[4_3-1875x2500]_eba.png"]
+]],
+["Loaded Doritos","doritos",[
+["Grilled Beef Doritos",15.99,"Nachos, cheddarsaus, rundvlees, Tony’s saus, groenten en sesam","SH","6a49370283e12_Beef_fototoestel_[4_3-1875x2500]_def.png"],
+["Crispy Chicken Doritos",13.99,"Nachos, cheddarsaus, krokante kip, teriyaki, groenten en sesam","SH","6a49372776055_Chicken_droits_[4_3-1875x2500]_290.png"],
+["Crispy Shrimp Doritos",14.99,"Nachos, cheddarsaus, garnalen, sweet chili, groenten en sesam","KSH","6a49374ed6876_Falafel_Fries_[4_3-1875x2500]_ba5.png"]
+]],
+["Salads","salads",[
+["Grilled Beef Salad",15.99,"Sla, dressing, rundvlees, Tony’s saus, groenten en sesam","SH","6a49375e6d34d_Beef_salad_[4_3-1875x2500]_60a.png"],
+["Crispy Chicken Salad",13.99,"Sla, krokante kip, teriyaki, groenten en sesam","SH","6a49376dd381d_Chicken_salad_[4_3-1875x2500]_fa7.png"],
+["Crispy Shrimp Salad",14.99,"Sla, garnalen, sweet chili, groenten en sesam","KSH","6a49377faee71_Shrimp_salad_[4_3-1875x2500]_46d.png"]
+]],
+["Cheesy specials","cheesy",[
+["Cheesy fries",10.99,"Seasoned fries, cheddarsaus, bosui en bieslook","","6a39530996b35_cheesy_fries.png"],
+["Cheesy Doritos",10.99,"Nachos, cheddarsaus, bosui en bieslook","","6a39534768711_cheesy_doritos.png"],
+["Cheesy onion rings",10.99,"Onion rings met kaassaus, bosui en bieslook","","6a6e37ebbee98_Cheesy_onion_rings.png"],
+["Cheesy Tenders",10.99,"Chicken tenders met kaassaus, bosui en bieslook","","6a6e3492dda5f_cheesy_tenders.png"],
+["Cheesy wings",10.99,"Wings met kaassaus, bosui en bieslook","","6a6e366f8ddfc_cheesy_wings.png"]
+]],
+["Bites","bites",[
+["Classic fries",4.99,"Seasoning, mayo en ketchup","","6a39515eb18c7_classic_fries.png"],
+["Onion rings 6 stuks",4.49,"Onion rings met BBQ- of sweet chilisaus","","6a6b700861c11_onion_rings.png"],
+["Onion rings 9 stuks",6.49,"Onion rings met BBQ- of sweet chilisaus","","6a6b701d2187d_onion_rings.png"],
+["Chicken nuggets 6 stuks",4.49,"Nuggets met saus","","6a3953a400587_IMG_7221.png"],
+["Chicken nuggets 9 stuks",6.49,"Nuggets met saus","","6a5273ab06fbd_6a3953a400587_IMG_7221.png"],
+["Hotwings 3 stuks",4.49,"Hotwings met saus","","6a39536644489_IMG_7220.png"],
+["Hotwings 6 stuks",8.49,"Hotwings met saus","","6a527616c0dcf_6a39536644489_IMG_7220.png"],
+["Tenders 3 stuks",4.49,"Tenders met saus","","6a3953907ddee_IMG_7219.png"],
+["Tenders 6 stuks",8.49,"Tenders met saus","","6a5272ae21277_6a3953907ddee_IMG_7219.png"]
+]],
+["Drinks","drinks",[
+["Red Bull Energy Drink 330ml",2.99,"","","6a61158004d93_138007-red-bull-energy-drink.png"],
+["Red Bull Sugarfree",2.99,"","","6a6268b4ebaa3_138008-red-bull-sugarfree.png"],
+["Coca-Cola",2.49,"330ml","","6a626da5bb6ad_138001-coca-cola-regular.png"],
+["Coca-Cola Zero Sugar",2.49,"330ml","","6a626db47eb5a_138002-coca-cola-zero.png"],
+["Fanta Orange 330ml",2.49,"","","6a6271d4a7e79_138003-fanta-orange.png"],
+["Sprite",2.49,"","","6a6271ec9e594_sprite-regular-blik-sleek-24-x-33-cl.png"],
+["Chaudfontaine rood",2.49,"","","6a627235c3656_water-chaudfontaine-sparkling-petfles-500ml.png"]
+]],
+["Sauces","sauces",[
+["Mayo",1.00,"","",""],
+["Ketchup",0.99,"","",""],
+["BBQ saus",0.99,"","",""],
+["Sweet chili sauce",0.99,"","",""],
+["Tony’s burger sauce",0.99,"","",""],
+["Tony’s white sauce",0.99,"","",""],
+["Teriyaki sauce",0.99,"","",""],
+["Cheddar sauce",0.99,"","",""]
+]]
 ];
 
-/* ==========================================================
-   CODE (hier hoef je normaal niets te wijzigen)
-   ========================================================== */
-var MAPQ=encodeURIComponent(ADRES);
-var MAP_EMBED="https://www.google.com/maps?q="+MAPQ+"&output=embed";
-var MAP_ROUTE="https://www.google.com/maps/dir/?api=1&destination="+MAPQ;
-var PBYID={};P.forEach(function(p){PBYID[p.id]=p});
+const $ = s => document.querySelector(s);
+const eur = n => "€ " + n.toFixed(2).replace(".", ",");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({
+  "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"
+}[c]));
 
-function svgu(s){return "data:image/svg+xml,"+encodeURIComponent(s)}
-function ph(t,w,h,s){return svgu('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'"><rect width="'+w+'" height="'+h+'" fill="#333"/><rect y="'+(h-12)+'" width="'+w+'" height="12" fill="#D71920"/><text x="50%" y="48%" fill="#fff" font-family="Arial" font-weight="700" font-size="'+Math.round(w/18)+'" text-anchor="middle">'+t+'</text><text x="50%" y="60%" fill="#bbb" font-family="Arial" font-size="'+Math.round(w/32)+'" text-anchor="middle">'+(s||"Vervang door eigen foto")+'</text></svg>')}
+const all = MENU.flatMap(c => c[2].map(i => ({
+  n:i[0], p:i[1], d:i[2], f:i[3], img:i[4], cat:c[0]
+})));
+const byName = n => all.find(i => i.n === n);
 
-function logo(){return IMG.logo||svgu('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">'
- +'<rect x="104" y="80" width="190" height="56" rx="20" fill="#111"/>'
- +'<text x="8" y="90" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="92" textLength="212" lengthAdjust="spacingAndGlyphs" fill="#fff" stroke="#111" stroke-width="14" stroke-linejoin="round" paint-order="stroke">MAX</text>'
- +'<rect x="228" y="16" width="32" height="80" rx="5" fill="#111"/><rect x="235" y="42" width="18" height="48" fill="#fff"/><circle cx="244" cy="28" r="9" fill="#D71920"/>'
- +'<rect x="112" y="92" width="174" height="34" rx="17" fill="#D71920"/>'
- +'<text x="124" y="117" font-family="Arial,sans-serif" font-weight="700" font-size="22" textLength="150" lengthAdjust="spacing" fill="#fff">SPORT</text></svg>')}
+function orderLinks() {
+  document.querySelectorAll(".order-link").forEach(a => {
+    a.href = ORDER_URL;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
+}
 
-function pimg(p){return p.img||(p.imgs&&p.imgs[0])||ph(CATS[p.cat][0]+" "+p.sub,800,1000)}
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
-function maten(p){return p.maten||MATEN[p.cat+"-"+p.sub]||null}
-function priceNum(p){if(!p.prijs)return null;var n=parseFloat(String(p.prijs).replace(/[^0-9,]/g,"").replace(",","."));return isNaN(n)?null:n}
-function money(n){return "€ "+n.toFixed(2).replace(".",",")}
-function subName(k,s){return CATS[k][1].filter(function(x){return x[0]===s})[0][1]}
+function card(i) {
+  const sold = i.f.includes("X");
+  const tags = [...i.f].map(c =>
+    `<span class="tag ${c==="H"?"h":""}">${FL[c] || ""}</span>`
+  ).join("");
+  const image = i.img
+    ? `<img loading="lazy" src="${enc(i.img)}" alt="${esc(i.n)}">`
+    : `<div style="padding:35px 5px;text-align:center;color:#777">${esc(i.n)}</div>`;
 
-/* Openingstijden en live status (Amsterdamse tijd) */
-function nowAms(){
-  var f=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Amsterdam",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date()),o={};
-  f.forEach(function(x){o[x.type]=x.value});
-  var days={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
-  return {d:days[o.weekday],m:(+o.hour%24)*60+(+o.minute)};
+  return `<article class="card">
+    <div class="ph" data-i="${all.indexOf(i)}" role="button" tabindex="0" aria-label="Details van ${esc(i.n)}">${image}</div>
+    <div class="bd">
+      <h3 data-i="${all.indexOf(i)}">${esc(i.n)}</h3>
+      ${tags ? `<div class="tags">${tags}</div>` : ""}
+      <p>${esc(i.d || "Bekijk dit product voor meer informatie.")}</p>
+      <div class="ft">
+        <span class="price">${eur(i.p)}</span>
+        ${sold ? `<span class="tag">Uitverkocht</span>` : `<a class="btn sm order-link" href="#">Bestellen</a>`}
+      </div>
+    </div>
+  </article>`;
 }
-function mins(t){var a=t.split(":");return +a[0]*60+ +a[1]}
-function status(){
-  var n=nowAms(),h=HOURS[n.d];
-  if(h.open&&n.m>=mins(h.open)&&n.m<mins(h.dicht))return {open:true,tekst:"Nu geopend, tot "+h.dicht+" uur"};
-  if(h.open&&n.m<mins(h.open))return {open:false,tekst:"Nu gesloten, vandaag open vanaf "+h.open+" uur"};
-  for(var i=1;i<=7;i++){var x=HOURS[(n.d+i)%7];if(x.open)return {open:false,tekst:"Nu gesloten, "+(i===1?"morgen":x.dag)+" open vanaf "+x.open+" uur"}}
-  return {open:false,tekst:"Nu gesloten"};
-}
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
-function hoursTable(){
-  var t=nowAms().d;
-  return '<table class="hrs"><caption class="sr">Openingstijden</caption>'+[1,2,3,4,5,6,0].map(function(i){var h=HOURS[i];return '<tr'+(i===t?' class="today"':'')+'><td>'+cap(h.dag)+'</td><td>'+(h.open?h.open+" – "+h.dicht:"Gesloten")+'</td></tr>'}).join("")+'</table>';
-}
-function hoursText(){return [1,2,3,4,5,6,0].map(function(i){var h=HOURS[i];return cap(h.dag)+" "+(h.open?h.open+"–"+h.dicht:"gesloten")}).join(", ")+"."}
 
-/* ---------- Winkelmand (bewaard in de browser) ---------- */
-var CART=[];
-try{CART=JSON.parse(localStorage.getItem("maxi-cart")||"[]")}catch(e){CART=[]}
-CART=CART.filter(function(c){return PBYID[c.id]});
-function saveCart(){try{localStorage.setItem("maxi-cart",JSON.stringify(CART))}catch(e){}}
-function cartCount(){return CART.reduce(function(a,c){return a+c.qty},0)}
-function cartSum(){var s=0,all=CART.length>0;CART.forEach(function(c){var n=priceNum(PBYID[c.id]);if(n===null)all=false;else s+=n*c.qty});return {s:s,all:all}}
-function badge(){
-  var n=cartCount(),cc=document.getElementById("cc"),b=document.getElementById("cartbtn");
-  if(cc)cc.textContent=n?n:"";
-  if(b)b.setAttribute("aria-label","Winkelmand, "+n+(n===1?" product":" producten"));
+function render(filter = "") {
+  const f = filter.trim().toLowerCase();
+  let html = "";
+  let count = 0;
+
+  MENU.forEach(([title,id]) => {
+    const list = all.filter(i =>
+      i.cat === title &&
+      (!f || (i.n + " " + i.d).toLowerCase().includes(f))
+    );
+    if (!list.length) return;
+    count += list.length;
+    html += `<section class="cat" id="c-${id}">
+      <h2>${esc(title)}</h2>
+      <div class="grid">${list.map(card).join("")}</div>
+    </section>`;
+  });
+
+  $("#menuBody").innerHTML = count
+    ? html
+    : `<p class="empty">Geen gerechten gevonden voor “${esc(filter)}”.</p>`;
+
+  orderLinks();
 }
-function say(t){document.getElementById("live").textContent=t}
-function addToCart(id,maat){
-  var f=CART.filter(function(c){return c.id===id&&c.maat===maat})[0];
-  if(f)f.qty++;else CART.push({id:id,maat:maat,qty:1});
-  saveCart();badge();renderCart();say(PBYID[id].name+" toegevoegd aan je winkelmand");
-}
-function renderCart(){
-  var t=cartSum();
-  var list=CART.map(function(c,i){
-    var p=PBYID[c.id],n=priceNum(p);
-    return '<div class="ci"><img src="'+pimg(p)+'" alt="" width="72" height="90"><div><div class="s">'+p.brand+'</div><div class="t">'+esc(p.name)+'</div><div class="s">'+(c.maat?'Maat '+c.maat+' · ':'')+(n!==null?money(n):'Prijs op aanvraag')+'</div><div class="qty"><button data-q="dec" data-i="'+i+'" aria-label="Minder">−</button><span aria-live="off">'+c.qty+'</span><button data-q="inc" data-i="'+i+'" aria-label="Meer">+</button><button class="rm" data-q="del" data-i="'+i+'">Verwijder</button></div></div></div>'}).join("");
-  var foot="";
-  if(CART.length){
-    foot='<div class="tot"><span>Subtotaal</span><span>'+(t.all?money(t.s):"Prijs wordt bevestigd")+'</span></div>'
-    +'<a class="btn" href="#/afrekenen" data-close>AFREKENEN</a>'
-    +'<a class="btn dark" href="tel:'+SHOP.telefoonLink+'">LIEVER BELLEN: '+SHOP.telefoonTekst+'</a>'
-    +'<small><i class="dot"></i><span>Click &amp; Collect mogelijk: haal je bestelling af in de winkel. '+SERVICE.titel+'.</span></small>';
+
+$("#cats").innerHTML = MENU.map(c =>
+  `<a href="#c-${c[1]}">${esc(c[0])}</a>`
+).join("");
+
+$("#q").addEventListener("input", e => render(e.target.value));
+
+$("#cats").addEventListener("click", e => {
+  if (e.target.closest("a") && $("#q").value) {
+    $("#q").value = "";
+    render();
   }
-  document.getElementById("cart").innerHTML='<div class="ch"><h2>WINKELMAND</h2><button id="cartclose" aria-label="Sluit winkelmand">✕</button></div><div class="cb">'+(CART.length?list:'<p class="empty">Je winkelmand is leeg. Kies een product en maat en klik op “In winkelmand”.</p>')+'</div><div class="cf"'+(CART.length?'':' hidden')+'>'+foot+'</div>';
-}
-var lastFocus=null;
-function openCart(){lastFocus=document.activeElement;renderCart();document.getElementById("ov").hidden=false;document.getElementById("cart").hidden=false;document.getElementById("cartclose").focus()}
-function closeCart(){document.getElementById("ov").hidden=true;document.getElementById("cart").hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+});
 
-/* ---------- Onderdelen ---------- */
-var R={a:"",b:""};
-function cur(k){return R.a===k?' aria-current="page"':''}
-function topbar(){var s=status();return '<div class="wrap"><span>'+(s.open?'●':'○')+' '+s.tekst+'</span><a class="cnl" href="#/click-collect"><i class="dot"></i>Click &amp; Collect</a><span class="addr"><a href="'+MAP_ROUTE+'" target="_blank" rel="noopener">'+ADRES+' · Route</a></span></div>'}
-function header(){
-  var items=Object.keys(CATS).map(function(k){var c=CATS[k];return '<li class="has-sub"><a href="#/'+k+'"'+cur(k)+'>'+c[0]+'</a><button class="sub-toggle" aria-expanded="false" aria-label="Toon '+c[0]+' categorieën"></button><ul class="sub">'+c[1].map(function(s){return '<li><a href="#/'+k+'/'+s[0]+'">'+s[1]+'</a></li>'}).join("")+'</ul></li>'}).join("");
-  items+='<li><a href="#/over-ons"'+cur("over-ons")+'>Over ons</a></li><li><a href="#/contact"'+cur("contact")+'>Contact</a></li>';
-  return '<div class="nav"><div class="nl"><button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button><nav aria-label="Hoofdmenu"><ul id="menu" class="menu">'+items+'</ul></nav></div>'
-  +'<a class="logo" href="#/" aria-label="Maxi Sport, naar de homepage"><img src="'+logo()+'" alt="Maxi Sport" width="116" height="58"></a>'
-  +'<div class="nr"><button class="cartbtn" id="cartbtn" aria-label="Winkelmand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cc" id="cc"></span></button>'
-  +'<a class="call" href="tel:'+SHOP.telefoonLink+'" aria-label="Bel Maxi Sport op '+SHOP.telefoonTekst+'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11 11 0 003.5.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.2.2 2.4.56 3.5a1 1 0 01-.25 1z"/></svg><span>Bel ons</span></a></div></div>';
-}
-function footer(){
-  var cols=Object.keys(CATS).map(function(k){return '<li><a href="#/'+k+'">'+CATS[k][0]+'</a></li>'}).join("");
-  var pop=[["heren","schoenen"],["heren","trainingspakken"],["junior","schoenen"],["dames","schoenen"],["kids","trainingspakken"]].map(function(x){return '<li><a href="#/'+x[0]+'/'+x[1]+'">'+CATS[x[0]][0]+" "+subName(x[0],x[1]).toLowerCase()+'</a></li>'}).join("");
-  var soc=SOCIALS.map(function(s){return '<li><a href="'+s.url+'" target="_blank" rel="noopener">'+s.naam+' '+s.handle+'</a></li>'}).join("");
-  return '<div class="wrap fgrid"><div><img class="flogo" src="'+logo()+'" alt="Maxi Sport" width="128" height="64"><p>Sport- en modewinkel op het Osdorpplein in Amsterdam. Sportkleding en sneakers van bekende merken, met persoonlijk advies in de winkel.</p></div>'
-  +'<div><h3>Categorieën</h3><ul>'+cols+'<li><a href="#/click-collect">Click &amp; Collect</a></li><li><a href="#/over-ons">Over ons</a></li></ul></div><div><h3>Populair</h3><ul>'+pop+'</ul></div>'
-  +'<div><h3>Contact</h3><ul><li><a href="tel:'+SHOP.telefoonLink+'">'+SHOP.telefoonTekst+'</a></li><li><a href="'+MAP_ROUTE+'" target="_blank" rel="noopener">'+SHOP.straat+'<br>'+SHOP.postcode+' '+SHOP.plaats+'</a></li></ul><h3 style="margin-top:20px">Volg ons</h3><ul>'+soc+'</ul><h3 style="margin-top:20px">Openingstijden</h3>'+hoursTable()+'</div></div>'
-  +'<div class="wrap copy">&copy; '+new Date().getFullYear()+' Maxi Sport. Alle rechten voorbehouden.</div>';
-}
-function faq(){return '<section class="faq wrap" aria-labelledby="faq-t"><h2 id="faq-t">VEELGESTELDE VRAGEN</h2>'+FAQ.map(function(f,i){return '<div class="qa"><h3><button aria-expanded="false" aria-controls="a'+i+'">'+f[0]+'</button></h3><div id="a'+i+'" class="ans" hidden><p>'+(f[1]==="@HOURS@"?hoursText():f[1])+'</p></div></div>'}).join("")+'</section>'}
-function social(){
-  return '<section class="social" aria-labelledby="soc-t"><div class="wrap"><div><h2 id="soc-t">VOLG ONS OP SOCIAL MEDIA</h2><p>Volg Maxi Sport op TikTok en Instagram voor nieuwe items en het laatste nieuws uit de winkel.</p></div><div class="social-btns">'+SOCIALS.map(function(s){return '<a class="btn dark" href="'+s.url+'" target="_blank" rel="noopener" aria-label="'+s.naam+' '+s.handle+' (opent in nieuw tabblad)">'+s.naam.toUpperCase()+' '+s.handle+'</a>'}).join("")+'</div></div></section>';
-}
-/* Maten als blokjes (keuzerondjes, werken ook met toetsenbord) */
-function sizes(p){var m=maten(p);return m?'<fieldset class="sizes"><legend class="sr">Kies een maat voor '+esc(p.name)+'</legend>'+m.map(function(x){return '<label class="chip"><input type="radio" name="m-'+p.id+'" value="'+x+'"><span>'+x+'</span></label>'}).join("")+'</fieldset>':''}
-/* Productkaart: klik op foto of naam gaat naar de productpagina */
-function card(p){
-  var inner='<img src="'+pimg(p)+'" alt="'+esc(p.name)+' ('+p.brand+'), voorbeeldafbeelding" width="800" height="1000" loading="lazy"><span class="pb">'+p.brand+'</span><span class="pn">'+esc(p.name)+'</span>'+(p.prijs?'<span class="pp">'+p.prijs+'</span>':'');
-  return '<div class="prod"><a href="#/product/'+p.id+'">'+inner+'</a>'+sizes(p)+'<button class="add" data-add="'+p.id+'">IN WINKELMAND</button></div>';
-}
-function brandItem(b,hidden){return BRANDLOGO[b]?'<img src="'+BRANDLOGO[b]+'" alt="'+(hidden?'':b)+'" width="160" height="44">':'<span class="bn">'+b+'</span>'}
-function marq(cls){var a=BRANDS.concat(BRANDS);
-  return '<div class="marquee '+cls+'" role="group" aria-label="Onze merken"><div class="track">'+a.map(function(b){return brandItem(b,false)}).join("")+'</div><div class="track" aria-hidden="true">'+a.map(function(b){return brandItem(b,true)}).join("")+'</div></div>'}
+const popular = [
+  "Smashburger cheese",
+  "Classic Chickenburger",
+  "Tony’s Super Smashburger",
+  "Crazy Tony Burger"
+];
+$("#popGrid").innerHTML = popular.map(n => card(byName(n))).join("");
 
-/* ---------- Pagina's ---------- */
-function home(){
-  var nw=NIEUW.map(function(i){return card(P[i])}).join("");
-  return '<section class="hero"><h1 class="sr">Jouw stijl. Jouw sport. Jouw Maxi.</h1><picture><source media="(max-width:900px)" srcset="'+(IMG.heroMobiel||ph("VERVANG: mobiele hero",1080,1350,"1080x1350"))+'"><img src="'+(IMG.hero||ph("VERVANG: hero-afbeelding",1920,720,"1920x720"))+'" alt="Maxi Sport: nieuwe collectie, sneakers en streetwear van de grootste merken" width="1920" height="720" fetchpriority="high"></picture>'
-  +'<a class="hb hd" href="#/heren"><span class="sr">Bekijk de collectie</span></a><a class="hb hm" href="#/heren"><span class="sr">Bekijk de collectie</span></a></section>'
-  +'<section class="brands" aria-label="Merken">'+marq("")+marq("rev")+'</section>'
-  +'<section class="wrap new"><div class="sec-h"><h2>NIEUW BINNEN</h2><p>Ontdek de nieuwste items en geef jouw outfit een upgrade.</p></div><div class="pgrid">'+nw+'</div><p class="note">Voorbeeldproducten: vervang door het echte assortiment in het blok PRODUCTEN bovenaan het script.</p><a class="btn dark" href="#/heren">BEKIJK ALLE PRODUCTEN</a></section>'
-  +'<section class="usps" aria-label="Waarom Maxi Sport"><div class="usp"><h3>Zelf passen</h3><p>Bekijk en pas alles in de winkel op het Osdorpplein.</p></div><div class="usp"><h3>Persoonlijk advies</h3><p>Ons team denkt met je mee bij sneakers en sportkleding.</p></div><div class="usp"><h3>Bekende merken</h3><p>Onder andere Nike, ASICS, New Balance, Lacoste en HUGO BOSS.</p></div><div class="usp"><h3>'+SERVICE.titel+'</h3><p>'+SERVICE.tekst+'</p></div></section>'
-  +'<section class="about" id="over-ons"><div class="about-i"><img src="'+(IMG.winkel||ph("VERVANG: winkelfoto",1000,1100,"Foto van de winkel op het Osdorpplein"))+'" alt="Maxi Sport op het Osdorpplein: sneakers en streetwear" width="1000" height="1100" loading="lazy"></div><div class="about-t"><h2>SPORT EN STYLE, MIDDEN IN OSDORP.</h2><p>Maxi Sport is een sport- en modewinkel op het Osdorpplein in Amsterdam. Je vindt hier sportkleding en sneakers van bekende sport- en modemerken.</p><p>Kom langs, pak de producten zelf van het rek en pas ze in de winkel. Ons team denkt met je mee en geeft persoonlijk advies.</p><a class="btn" href="#/contact">BEZOEK ONZE WINKEL</a></div></section>'
-  +social()+faq();
-}
-function hub(k){var c=CATS[k];
-  return '<div class="wrap crumbs"><a href="#/">Home</a> / <span>'+c[0]+'</span></div><section class="banner"><div class="wrap"><h1>'+c[0].toUpperCase()+'</h1><p>Kies een categorie voor '+c[0].toLowerCase()+' en bekijk het assortiment. Liever zelf passen? Kom langs in de winkel.</p></div></section><section class="wrap tiles" style="padding-top:40px">'+c[1].map(function(s){var p=P.filter(function(x){return x.cat===k&&x.sub===s[0]})[0];return '<a class="tile" href="#/'+k+'/'+s[0]+'"><img src="'+pimg(p)+'" alt="'+c[0]+' '+s[1]+'" width="800" height="1000" loading="lazy"><span>'+s[1]+'</span></a>'}).join("")+'</section>';
-}
-function cat(k,s){var c=CATS[k],n=subName(k,s);
-  return '<div class="wrap crumbs"><a href="#/">Home</a> / <a href="#/'+k+'">'+c[0]+'</a> / <span>'+n+'</span></div><section class="banner"><div class="wrap"><h1>'+(c[0]+" "+n).toUpperCase()+'</h1><p>'+n+' voor '+c[0].toLowerCase()+' van bekende sport- en modemerken. Voorbeeldproducten: pas het echte assortiment aan bovenaan het script.</p></div></section>'
-  +'<section class="wrap"><div class="filters"><label for="bf">Merk</label><select id="bf"><option value="">Alle merken</option></select><label for="q">Zoeken</label><input id="q" type="search" placeholder="Productnaam"><label for="so">Sorteren</label><select id="so"><option value="">Standaard</option><option value="az">Naam A–Z</option><option value="za">Naam Z–A</option></select><span id="cnt" aria-live="polite"></span></div><div class="pgrid" id="grid"></div></section>'
-  +'<section class="cta-band"><div class="wrap"><h2>Zelf passen? Kom langs op het Osdorpplein.</h2><a class="btn" href="#/contact">BEZOEK ONZE WINKEL</a></div></section>';
-}
-var GAL=[];
-function product(id){
-  var p=PBYID[id],c=CATS[p.cat],n=subName(p.cat,p.sub),I=p.info||INFO[p.sub]||INFO["default"];
-  GAL=p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:["Voorkant","Zijkant","Detail","Achterkant"].map(function(l){return ph(p.name+" · "+l,800,1000)}));
-  return '<div class="wrap crumbs"><a href="#/">Home</a> / <a href="#/'+p.cat+'">'+c[0]+'</a> / <a href="#/'+p.cat+'/'+p.sub+'">'+n+'</a> / <span>'+esc(p.name)+'</span></div>'
-  +'<section class="wrap pdp"><div class="gal"><img id="gmain" src="'+GAL[0]+'" alt="'+esc(p.name)+' ('+p.brand+')" width="800" height="1000"><div class="thumbs">'+GAL.map(function(g,i){return '<button data-g="'+i+'" aria-label="Toon foto '+(i+1)+'"'+(i?'':' aria-current="true"')+'><img src="'+g+'" alt="" width="200" height="250"></button>'}).join("")+'</div></div>'
-  +'<div><span class="pb" style="margin:0">'+p.brand+'</span><h1>'+esc(p.name)+'</h1><div class="price">'+(p.prijs||"Prijs op aanvraag")+'</div><p>'+I.tekst+'</p>'+sizes(p)+'<button class="add" data-add="'+p.id+'">IN WINKELMAND</button>'
-  +'<p class="cnote"><i class="dot"></i>Click &amp; Collect: bestel online, haal gratis af in de winkel.</p>'
-  +'<h2>Productinformatie</h2><dl><dt>Merk</dt><dd>'+p.brand+'</dd><dt>Categorie</dt><dd>'+c[0]+' · '+n+'</dd><dt>Materiaal</dt><dd>'+I.materiaal+'</dd><dt>Onderhoud</dt><dd>'+I.onderhoud+'</dd></dl>'
-  +'<h2>Retourneren</h2><p>'+BELEID.retour+'</p><p class="note">Voorbeeldproduct: foto’s en productinformatie zijn voorbeelden.</p></div></section>';
-}
-function cnc(){
-  return '<div class="wrap crumbs"><a href="#/">Home</a> / <span>Click &amp; Collect</span></div><section class="banner"><div class="wrap"><h1>CLICK &amp; COLLECT</h1><p>Online bestellen, gratis ophalen in de winkel op het Osdorpplein.</p></div></section>'
-  +'<section class="wrap" style="padding:48px 24px 80px"><ol class="steps"><li><strong>Kies je producten en maat</strong><br>Zet ze in je winkelmandje.</li><li><strong>Kies Click &amp; Collect bij het afrekenen</strong><br>Reken online af. Er zijn geen verzendkosten.</li><li><strong>Haal je bestelling op</strong><br>Kom langs op het Osdorpplein. '+SERVICE.tekst+'</li></ol><a class="btn" href="#/heren">SHOP NU</a></section>';
-}
-function checkout(){
-  var hd='<div class="wrap crumbs"><a href="#/">Home</a> / <span>Afrekenen</span></div>';
-  if(!CART.length)return hd+'<section class="wrap" style="padding:32px 24px 80px"><h1>AFREKENEN</h1><p class="empty">Je winkelmand is leeg.</p><a class="btn" href="#/heren">SHOP NU</a></section>';
-  var rows=CART.map(function(c){var p=PBYID[c.id],n=priceNum(p);return '<li><span>'+c.qty+'× '+p.brand+' '+esc(p.name)+(c.maat?' (maat '+c.maat+')':'')+'</span><span>'+(n!==null?money(n*c.qty):'op aanvraag')+'</span></li>'}).join("");
-  return hd+'<section class="wrap co"><form id="co" class="f"><h1 style="font-size:2.2rem;margin-bottom:8px">AFREKENEN</h1>'
-  +'<h2>Jouw gegevens</h2><label class="l" for="naam">Naam</label><input type="text" id="naam" name="naam" autocomplete="name" required><label class="l" for="em">E-mailadres</label><input type="email" id="em" name="email" autocomplete="email" required><label class="l" for="tel">Telefoon</label><input type="tel" id="tel" name="tel" autocomplete="tel" required>'
-  +'<h2>Levering</h2><fieldset><legend class="sr">Levering</legend><label class="opt"><input type="radio" name="lev" value="cnc" checked><span><i class="dot"></i> Click &amp; Collect<small>Afhalen in de winkel, gratis</small></span></label><label class="opt"><input type="radio" name="lev" value="bez"><span>Thuis bezorgen<small>'+money(SHIP.kosten)+'</small></span></label></fieldset>'
-  +'<div id="adr" hidden><label class="l" for="str">Straat en huisnummer</label><input type="text" id="str" name="straat" autocomplete="street-address"><label class="l" for="pc">Postcode</label><input type="text" id="pc" name="pc" autocomplete="postal-code"><label class="l" for="pl">Plaats</label><input type="text" id="pl" name="plaats" autocomplete="address-level2"></div>'
-  +'<h2>Betalen</h2><fieldset><legend class="sr">Betaalmethode</legend><label class="opt"><input type="radio" name="pay" value="ideal" checked><span>iDEAL</span></label><label class="opt"><input type="radio" name="pay" value="card"><span>Creditcard of bankpas</span></label></fieldset>'
-  +'<p class="msg" id="comsg" role="alert" hidden></p><button class="btn" id="paybtn" type="submit" style="margin-top:24px;width:100%"></button><p class="note">'+BELEID.retour+'</p></form>'
-  +'<aside class="sum" aria-label="Overzicht"><h2 style="font-size:1.3rem;font-style:normal;margin-bottom:12px">Jouw bestelling</h2><ul>'+rows+'<li><span>Verzending</span><span id="sh"></span></li><li class="tot"><span>Totaal</span><span id="tt"></span></li></ul></aside></section>';
-}
-function updTotals(){
-  var f=document.getElementById("co");if(!f)return;
-  var b=f.elements.lev.value==="bez",t=cartSum(),sh=b?SHIP.kosten:0;
-  document.getElementById("sh").textContent=b?money(sh):"Gratis";
-  document.getElementById("tt").textContent=t.all?money(t.s+sh):"Prijs wordt bevestigd";
-  var pb=document.getElementById("paybtn");pb.textContent=t.all?"BETAAL "+money(t.s+sh):"PRIJS ONTBREEKT, BEL ONS";pb.disabled=!t.all;
-  var a=document.getElementById("adr");a.hidden=!b;a.querySelectorAll("input").forEach(function(i){i.required=b});
-}
-function contact(){
-  return '<div class="wrap crumbs"><a href="#/">Home</a> / <span>Contact</span></div><section class="banner"><div class="wrap"><h1>CONTACT</h1><p>Kom langs, bel ons of plan je route naar de winkel.</p></div></section>'
-  +'<section class="wrap cgrid" style="padding-top:48px"><div><h2>Winkel</h2><p>'+SHOP.naam+'<br>'+SHOP.straat+'<br>'+SHOP.postcode+' '+SHOP.plaats+'</p><p><a class="btn dark" href="'+MAP_ROUTE+'" target="_blank" rel="noopener">PLAN JE ROUTE</a></p><h2>Bellen</h2><p><a href="tel:'+SHOP.telefoonLink+'"><strong>'+SHOP.telefoonTekst+'</strong></a></p><h2>Openingstijden</h2><p><strong>'+status().tekst+'</strong></p>'+hoursTable()+'</div><div class="map"><iframe title="Kaart van Maxi Sport, '+ADRES+'" src="'+MAP_EMBED+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></section>'+social()+faq();
-}
+const beltNames = [
+  "Tony’s Super Smashburger",
+  "Tony’s Super chickenburger",
+  "Crazy Tony Burger",
+  "Smashburger cheese"
+];
 
-/* Router: #/  #/heren  #/heren/schoenen  #/product/id  #/afrekenen  #/click-collect  #/contact  #/over-ons */
-function route(){
-  var h=location.hash.replace(/^#\/?/,"").split("/");R.a=h[0]||"";R.b=h[1]||"";
-  var m=document.getElementById("main"),t="Sportkleding en sneakers",d="Maxi Sport op het Osdorpplein in Amsterdam: sportkleding, sneakers en trainingspakken van bekende merken.",html;
-  if(R.a==="contact"){html=contact();t="Contact";d="Adres, telefoonnummer en openingstijden van Maxi Sport, "+ADRES+"."}
-  else if(R.a==="product"&&PBYID[R.b]){var pp=PBYID[R.b];html=product(R.b);t=pp.name+" "+pp.brand;d=pp.name+" van "+pp.brand+" bij Maxi Sport op het Osdorpplein in Amsterdam."}
-  else if(R.a==="afrekenen"){html=checkout();t="Afrekenen";d="Reken je bestelling af bij Maxi Sport."}
-  else if(R.a==="click-collect"){html=cnc();t="Click & Collect";d="Bestel online en haal gratis af in de winkel van Maxi Sport op het Osdorpplein."}
-  else if(CATS[R.a]&&R.b&&CATS[R.a][1].some(function(x){return x[0]===R.b})){html=cat(R.a,R.b);t=CATS[R.a][0]+" "+subName(R.a,R.b);d=t+" bij Maxi Sport op het Osdorpplein in Amsterdam."}
-  else if(CATS[R.a]){html=hub(R.a);t=CATS[R.a][0];d=t+" sportkleding en schoenen bij Maxi Sport op het Osdorpplein."}
-  else{html=home();if(R.a!=="over-ons")R.a=""}
-  m.innerHTML=html;
-  document.getElementById("tb").innerHTML=topbar();document.getElementById("hd").innerHTML=header();document.getElementById("ft").innerHTML=footer();badge();
-  document.title=t+" | Maxi Sport Osdorpplein";document.getElementById("md").setAttribute("content",d);
-  updTotals();
-  var g=document.getElementById("grid");
-  if(g){
-    var list=P.filter(function(p){return p.cat===R.a&&p.sub===R.b}),sb=document.getElementById("bf"),q=document.getElementById("q"),so=document.getElementById("so"),cnt=document.getElementById("cnt");
-    list.map(function(p){return p.brand}).filter(function(v,i,a){return a.indexOf(v)===i}).sort().forEach(function(v){var o=document.createElement("option");o.value=o.textContent=v;sb.appendChild(o)});
-    var draw=function(){
-      var f=list.filter(function(p){return(!sb.value||p.brand===sb.value)&&(!q.value||(p.name+" "+p.brand).toLowerCase().indexOf(q.value.toLowerCase())>-1)});
-      if(so.value)f.sort(function(a,b){return so.value==="az"?a.name.localeCompare(b.name):b.name.localeCompare(a.name)});
-      g.innerHTML=f.length?f.map(card).join(""):'<p>Geen producten gevonden. Pas je filter aan.</p>';cnt.textContent=f.length+" producten";
-    };
-    sb.addEventListener("change",draw);so.addEventListener("change",draw);q.addEventListener("input",draw);draw();
+function beltCard(name) {
+  const i = byName(name);
+  if (!i) return "";
+  return `<button class="belt-item" type="button" data-i="${all.indexOf(i)}">
+    <img src="${enc(i.img)}" alt="${esc(i.n)}" loading="lazy">
+    <span><strong>${esc(i.n)}</strong><span class="price">${eur(i.p)}</span></span>
+  </button>`;
+}
+$("#belt").innerHTML = [...beltNames, ...beltNames].map(beltCard).join("");
+
+/* Productdetails */
+const dlg = $("#dlg");
+document.addEventListener("click", e => {
+  const target = e.target.closest("[data-i]");
+  if (!target) return;
+
+  const i = all[Number(target.dataset.i)];
+  if (!i) return;
+
+  $("#dI").src = i.img ? enc(i.img) : "";
+  $("#dI").alt = i.n;
+  $("#dI").style.display = i.img ? "block" : "none";
+  $("#dT").textContent = i.n;
+  $("#dD").textContent = i.d || i.cat;
+  $("#dP").textContent = eur(i.p);
+  $("#dG").innerHTML = [...i.f].map(c =>
+    `<span class="tag ${c==="H"?"h":""}">${FL[c] || ""}</span>`
+  ).join("");
+
+  dlg.querySelector(".order-link").style.display =
+    i.f.includes("X") ? "none" : "inline-flex";
+
+  if (!dlg.open) dlg.showModal();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.matches(".ph[data-i]")) e.target.click();
+});
+$("#dX").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => {
+  if (e.target === dlg) dlg.close();
+});
+
+/* Mobiele navigatie */
+$("#burger").addEventListener("click", () => {
+  const open = $("#nav").classList.toggle("open");
+  $("#burger").setAttribute("aria-expanded", String(open));
+  $("#burger").setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+});
+$("#nav").addEventListener("click", e => {
+  if (e.target.closest("a")) {
+    $("#nav").classList.remove("open");
+    $("#burger").setAttribute("aria-expanded", "false");
   }
-  if(R.a==="over-ons"){document.getElementById("over-ons").scrollIntoView()}else{window.scrollTo(0,0)}
-}
+});
 
-/* Klikgedrag */
-document.addEventListener("click",function(e){
-  var t=e.target;
-  if(t.closest("#sk")){e.preventDefault();document.getElementById("main").focus();return}
-  var gb=t.closest("[data-g]");
-  if(gb){document.getElementById("gmain").src=GAL[+gb.getAttribute("data-g")];document.querySelectorAll("[data-g]").forEach(function(x){x.removeAttribute("aria-current")});gb.setAttribute("aria-current","true");return}
-  var add=t.closest("[data-add]");
-  if(add){
-    var id=add.getAttribute("data-add"),first=document.querySelector('input[name="m-'+id+'"]'),maat="";
-    if(first){
-      var ch=document.querySelector('input[name="m-'+id+'"]:checked');
-      if(!ch){first.closest(".sizes").classList.add("err");first.focus();say("Kies eerst een maat");return}
-      maat=ch.value;
-    }
-    addToCart(id,maat);var old=add.textContent;add.textContent="TOEGEVOEGD ✓";setTimeout(function(){add.textContent=old},1200);return;
-  }
-  if(t.closest("[data-close]"))closeCart();
-  if(t.closest("#cartbtn")){openCart();return}
-  if(t.closest("#cartclose")||t.closest("#ov")){closeCart();return}
-  var qb=t.closest("[data-q]");
-  if(qb){var i=+qb.getAttribute("data-i"),a=qb.getAttribute("data-q");
-    if(a==="inc")CART[i].qty++;else if(a==="dec"){CART[i].qty--;if(CART[i].qty<1)CART.splice(i,1)}else CART.splice(i,1);
-    saveCart();badge();renderCart();if(R.a==="afrekenen")route();return}
-  var b=t.closest(".burger"),m=document.getElementById("menu");
-  if(b){var o=m.classList.toggle("open");b.setAttribute("aria-expanded",o);return}
-  var s=t.closest(".sub-toggle");
-  if(s){var o2=s.parentNode.classList.toggle("open");s.setAttribute("aria-expanded",o2);return}
-  var qa=t.closest(".qa button");
-  if(qa){var an=document.getElementById(qa.getAttribute("aria-controls")),open=qa.getAttribute("aria-expanded")==="true";qa.setAttribute("aria-expanded",!open);an.hidden=open}
-});
-document.addEventListener("change",function(e){
-  var t=e.target;if(t.name==="lev")updTotals();
-  var s=t.closest&&t.closest(".sizes");if(s)s.classList.remove("err");
-});
-/* Afrekenen: stuurt de bestelling (zonder prijzen) naar PAY.url en gaat door naar de betaalpagina */
-document.addEventListener("submit",function(e){
-  var f=e.target;if(f.id!=="co")return;e.preventDefault();
-  var d=new FormData(f),bez=d.get("lev")==="bez",m=document.getElementById("comsg");
-  var order={klant:{naam:d.get("naam"),email:d.get("email"),telefoon:d.get("tel")},levering:bez?"bezorgen":"click-collect",adres:bez?{straat:d.get("straat"),postcode:d.get("pc"),plaats:d.get("plaats")}:null,betaalmethode:d.get("pay"),
-    regels:CART.map(function(c){var p=PBYID[c.id];return {id:c.id,merk:p.brand,naam:p.name,maat:c.maat,aantal:c.qty}})};
-  m.hidden=false;
-  if(!PAY.url){m.textContent="Online betalen is nog niet gekoppeld aan een betaalprovider. Bel ons op "+SHOP.telefoonTekst+" om je bestelling af te ronden.";return}
-  m.textContent="Je wordt doorgestuurd naar het betalen…";
-  fetch(PAY.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(order)})
-   .then(function(r){return r.json()})
-   .then(function(x){if(x&&x.url){location.href=x.url}else{throw 0}})
-   .catch(function(){m.textContent="Er ging iets mis bij het starten van de betaling. Probeer het opnieuw of bel ons op "+SHOP.telefoonTekst+"."});
-});
-document.addEventListener("keydown",function(e){
-  if(e.key==="Escape"){var m=document.getElementById("menu");if(m)m.classList.remove("open");if(!document.getElementById("cart").hidden)closeCart()}
-});
-window.addEventListener("hashchange",route);
-setInterval(function(){document.getElementById("tb").innerHTML=topbar()},60000);
-renderCart();route();
+/* Openingstijden */
+const DAYS = ["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"];
+const ORDER = [1,2,3,4,5,6,0];
+$("#hrsO").innerHTML = ORDER.map(d =>
+  `<li><b>${DAYS[d]}:</b> ${d===1 ? "Gesloten" : "17:00–23:00"}</li>`
+).join("");
+
+orderLinks();
+render();
 </script>
 </body>
 </html>
